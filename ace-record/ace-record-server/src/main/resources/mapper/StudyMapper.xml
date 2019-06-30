@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mmc.security.record.mapper.StudyMapper" >
+  <resultMap id="BaseResultMap" type="com.mmc.security.record.entity.Study" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="study_content" property="studyContent" jdbcType="VARCHAR" />
+    <result column="aim" property="aim" jdbcType="VARCHAR" />
+    <result column="start_date" property="startDate" jdbcType="DATE" />
+    <result column="end_date" property="endDate" jdbcType="DATE" />
+    <result column="achieve_date" property="achieveDate" jdbcType="DATE" />
+    <result column="result" property="result" jdbcType="VARCHAR" />
+  </resultMap>
+
+
+</mapper>

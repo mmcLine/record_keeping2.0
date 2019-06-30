@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mmc.security.admin.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.mmc.security.admin.entity.User">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="birthday" jdbcType="VARCHAR" property="birthday" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="mobile_phone" jdbcType="VARCHAR" property="mobilePhone" />
+    <result column="tel_phone" jdbcType="VARCHAR" property="telPhone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="sex" jdbcType="CHAR" property="sex" />
+    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="crt_time" jdbcType="DATE" property="crtTime" />
+    <result column="crt_user" jdbcType="VARCHAR" property="crtUser" />
+    <result column="crt_name" jdbcType="VARCHAR" property="crtName" />
+    <result column="crt_host" jdbcType="VARCHAR" property="crtHost" />
+    <result column="upd_time" jdbcType="DATE" property="updTime" />
+    <result column="upd_user" jdbcType="VARCHAR" property="updUser" />
+    <result column="upd_name" jdbcType="VARCHAR" property="updName" />
+    <result column="upd_host" jdbcType="VARCHAR" property="updHost" />
+    <result column="attr1" jdbcType="VARCHAR" property="attr1" />
+    <result column="attr2" jdbcType="VARCHAR" property="attr2" />
+    <result column="attr3" jdbcType="VARCHAR" property="attr3" />
+    <result column="attr4" jdbcType="VARCHAR" property="attr4" />
+    <result column="attr5" jdbcType="VARCHAR" property="attr5" />
+    <result column="attr6" jdbcType="VARCHAR" property="attr6" />
+    <result column="attr7" jdbcType="VARCHAR" property="attr7" />
+    <result column="attr8" jdbcType="VARCHAR" property="attr8" />
+    <result column="dept_id" jdbcType="INTEGER" property="deptId" />
+    <result column="power_group" jdbcType="INTEGER" property="powerGroup" />
+  </resultMap>
+
+  <resultMap id="UserResult" type="com.mmc.security.admin.vo.UserVO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sex" jdbcType="CHAR" property="sex" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="dept_name" jdbcType="VARCHAR" property="deptname" />
+    <result column="upd_time" jdbcType="TIMESTAMP" property="updTime" />
+    <result column="upd_name" jdbcType="VARCHAR" property="updName" />
+    <result column="power_group" jdbcType="VARCHAR" property="powerGroup" />
+  </resultMap>
+
+
+  <resultMap id="UserOrgResult" type="com.mmc.security.auth.client.vo.UserOrgInfo">
+    <id column="id" jdbcType="INTEGER" property="userId" />
+    <id column="dept_id" jdbcType="INTEGER" property="deptId" />
+    <id column="org_id" jdbcType="INTEGER" property="orgId" />
+    <id column="power_group" jdbcType="INTEGER" property="powerGroup" />
+
+  </resultMap>
+  
+  <select id="selectMemberByGroupId" resultMap="BaseResultMap">
+    select u.* from base_user u
+    left join  base_user_role gm
+    on gm.user_id = u.id where gm.role_id = #{roleId}
+  </select>
+  <select id="selectLeaderByGroupId" resultMap="BaseResultMap">
+    select u.* from base_user u
+    left join  base_user_role gm
+    on gm.user_id = u.id where gm.role_id = #{roleId}
+  </select>
+
+  <select id="listByQuery" resultMap="UserResult">
+     SELECT u.`id`,u.`username`,u.`name`,u.`sex`,u.`description`,u.`upd_name`,u.`upd_time`,u.power_group,d.`dept_name` FROM base_user u LEFT JOIN base_dept d ON u.`dept_id`=d.`id`
+      <if test="userName!=null">
+        where u.username like #{userName}  or u.name like #{userName}
+      </if>
+  </select>
+
+  <select id="conutByQuery" resultType="integer">
+  SELECT count(*) FROM base_user u LEFT JOIN base_dept d ON u.`dept_id`=d.`id`
+  <if test="userName!=null">
+    where u.username like #{userName}  or u.name like #{userName}
+  </if>
+</select>
+
+
+  <select id="getUserOrgById" resultMap="UserOrgResult">
+   SELECT u.id,u.dept_id,d.`org_id`,u.`power_group` FROM base_user  u LEFT JOIN base_dept d ON u.`dept_id`=d.`id` where u.id=#{id}
+  </select>
+ </mapper>

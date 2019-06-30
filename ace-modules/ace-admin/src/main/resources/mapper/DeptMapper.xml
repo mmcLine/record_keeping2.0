@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mmc.security.admin.mapper.DeptMapper" >
+  <resultMap id="BaseResultMap" type="com.mmc.security.admin.vo.DeptVO" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="dept_code" property="deptCode" jdbcType="VARCHAR" />
+    <result column="dept_name" property="deptName" jdbcType="VARCHAR" />
+    <result column="org_id" property="orgId" jdbcType="INTEGER" />
+    <result column="crt_time" property="crtTime" jdbcType="TIMESTAMP" />
+    <result column="crt_user" property="crtUser" jdbcType="VARCHAR" />
+    <result column="upd_time" property="updTime" jdbcType="DATE" />
+    <result column="upd_user" property="updUser" jdbcType="VARCHAR" />
+    <result column="org_name" property="orgName" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <select id="listByQuery" resultMap="BaseResultMap">
+    SELECT d.*,o.`org_name` FROM base_dept d LEFT JOIN base_org o ON d.`org_id`=o.id
+    <if test="deptName != null">
+      WHERE d.`dept_name` LIKE  #{deptName}
+    </if>
+
+  </select>
+</mapper>
