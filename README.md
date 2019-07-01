@@ -14,3 +14,49 @@
 
 ### 熔断机制
 因为采取了服务的分布，为了避免服务之间的调用“雪崩”，采用了Hystrix的作为熔断器，避免了服务之间的“雪崩”。
+
+
+
+## 项目启动
+
+### 项目结构
+
+ace-security
+    
+  ace-modules--------------公共服务模块（基础系统、搜索、OSS）
+   
+  ace-auth-----------------服务鉴权中心
+   
+  ace-gate-----------------网关负载中心
+   
+  ace-common---------------通用脚手架
+     
+  ace-control--------------运维中心（监控、链路）
+  
+  ace-sidebar--------------调用第三方语言服务
+  
+  ace-record-------------- 记账系统
+  
+  
+ ### 环境须知
+ - mysql一个，redis一个，sentiel一个，nacos注册中心一个
+ - jdk1.8
+ - lombok插件
+
+ 
+ ### 运行步骤
+ - 先启动redis、redis、mysql以及nacos注册中心
+ - 运行数据库脚本 ：ace-modules/ace-admin/src/db/admin.sql、ace-auth-server/src/db/auth.sql、ace-record/ace-record-server/src/db/record.sql
+ - 注意将项目中的数据库密码改掉，或者改你的数据库密码（我设置的是0490218292）
+ - 按顺序运行main类 AuthBootstrap，AdminBootstrap,RecordBootstrap,GatewayServerBootstrap
+ - 后端启动完毕
+ - 前端项目下载我空间record_vue2.0那个启动就行了，普通vue的运行操作
+ 
+  ### 特别鸣谢
+  Spring-Cloud-Admin
+  如在启动时遇到问题可联系我QQ：990974807
+ 
+ 
+ 
+ 
+ 
