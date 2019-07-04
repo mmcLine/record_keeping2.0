@@ -59,11 +59,11 @@ public class BaseContextHandler {
     }
 
     public static Integer getDept(){
-        return Integer.valueOf(get(CommonConstants.CONTEXT_KEY_DEPT_ID).toString());
+        return get(CommonConstants.CONTEXT_KEY_DEPT_ID)==null?null:Integer.valueOf(get(CommonConstants.CONTEXT_KEY_DEPT_ID).toString());
     }
 
     public static Integer getOrg(){
-        return Integer.valueOf(get(CommonConstants.CONTEXT_KEY_ORG_ID).toString());
+        return get(CommonConstants.CONTEXT_KEY_ORG_ID)==null?null:Integer.valueOf(get(CommonConstants.CONTEXT_KEY_ORG_ID).toString());
     }
 
     public static Integer getPowerGroup(){
