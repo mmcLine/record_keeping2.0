@@ -1,3 +1,6 @@
+REDIS_HOST: 49.234.77.60
+MYSQL_HOST: 49.234.77.60
+NACOS_URL: 49.234.77.60:8848
 server:
   port: 8765
 
@@ -24,6 +27,7 @@ spring:
       jedis:
         pool:
             max-active: 20
+      password: 990974807
   rabbitmq:
       host: ${RABBIT_MQ_HOST:localhost}
       port:  ${RABBIT_MQ_PORT:5672}
@@ -65,7 +69,7 @@ spring:
           - StripPrefix=2
      nacos:
         discovery:
-          server-addr: 127.0.0.1:8848
+          server-addr: ${NACOS_URL:127.0.0.1:8848}
   sentinel:
     transport:
       dashboard: localhost:8080

@@ -1,3 +1,6 @@
+REDIS_HOST: 49.234.77.60
+MYSQL_HOST: 49.234.77.60
+NACOS_URL: 49.234.77.60:8848
 spring:
   application:
     name: ace-auth
@@ -11,6 +14,7 @@ spring:
     port: ${REDIS_PORT:6379}
     pool:
     max-active: 20
+    password: 990974807
   datasource:
     name: test
     url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/ag_auth_v1?useUnicode=true&FcharacterEncoding=UTF8&serverTimezone=GMT%2B8
@@ -45,7 +49,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
+        server-addr: ${NACOS_URL:127.0.0.1:8848}
     sentinel:
       transport:
         dashboard: localhost:8080

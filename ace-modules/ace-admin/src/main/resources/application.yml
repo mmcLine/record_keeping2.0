@@ -1,3 +1,6 @@
+REDIS_HOST: 49.234.77.60
+MYSQL_HOST: 49.234.77.60
+NACOS_URL: 49.234.77.60:8848
 logging:
     level:
 #        tk.mybatis: DEBUG
@@ -43,7 +46,7 @@ spring:
     cloud:
       nacos:
         discovery:
-          server-addr: 127.0.0.1:8848
+          server-addr: ${NACOS_URL:127.0.0.1:8848}
       sentinel:
         transport:
           dashboard: localhost:8080
@@ -117,7 +120,7 @@ redis:
          maxWait: 1000
     host: ${REDIS_HOST:localhost}
     port:  ${REDIS_PORT:6379}
-    password:
+    password: 990974807
     timeout: 2000
     # 服务或应用名
     sysName: ace-admin

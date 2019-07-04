@@ -1,3 +1,6 @@
+REDIS_HOST: 49.234.77.60
+MYSQL_HOST: 49.234.77.60
+NACOS_URL: 49.234.77.60:8848
 logging:
     level:
 #        tk.mybatis: DEBUG
@@ -43,7 +46,7 @@ spring:
     cloud:
       nacos:
         discovery:
-          server-addr: 127.0.0.1:8848
+          server-addr: ${NACOS_URL:127.0.0.1:8848}
       sentinel:
         transport:
           dashboard: localhost:8080

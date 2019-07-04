@@ -3,8 +3,6 @@ package com.mmc.security.auth.controller;
 import com.mmc.security.auth.service.AuthService;
 import com.mmc.security.auth.util.user.JwtAuthenticationRequest;
 import com.mmc.security.common.msg.ObjectRestResponse;
-import com.mmc.security.auth.service.AuthService;
-import com.mmc.security.auth.util.user.JwtAuthenticationRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,7 +23,7 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
-    @RequestMapping(value = "token", method = RequestMethod.POST)
+    @RequestMapping(value = "token")
     public ObjectRestResponse<String> createAuthenticationToken(
             @RequestBody JwtAuthenticationRequest authenticationRequest) throws Exception {
         log.info(authenticationRequest.getUsername()+" require logging...");
