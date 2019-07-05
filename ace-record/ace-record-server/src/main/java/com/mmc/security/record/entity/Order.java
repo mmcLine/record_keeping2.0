@@ -22,7 +22,6 @@ import java.util.Date;
 public class Order extends BaseBean{
 
     @Id
-    @OrderBy(value = "desc")
     private Integer id;
 
     private String name;
@@ -30,6 +29,7 @@ public class Order extends BaseBean{
     private BigDecimal amt;
 
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd")
+    @OrderBy(value = "desc")
     private Date tradeDate;
 
     private Integer tradeType;
