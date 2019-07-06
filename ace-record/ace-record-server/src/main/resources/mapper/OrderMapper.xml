@@ -13,5 +13,8 @@
     <result column="crt_time" property="crtTime" jdbcType="TIMESTAMP" />
   </resultMap>
 
+  <select id="getMonthReport" resultType="com.mmc.security.record.vo.MonthReportVO">
+    SELECT  DATE_FORMAT(trade_date,'%Y%m') MONTH,SUM(amt) totalamt FROM trade_order GROUP BY MONTH ORDER BY MONTH DESC LIMIT 7;
+  </select>
 
 </mapper>
