@@ -52,6 +52,12 @@ ace-security
  - 后端启动完毕
  - 前端项目下载我空间record_vue2.0那个启动就行了，普通vue的运行操作
  
+ 
+ ### 运行截图
+ ![image](https://github.com/mmcLine/readme_pic/tree/master/images/1.png)
+ ![image](https://github.com/mmcLine/readme_pic/tree/master/images/2.png)
+ ![image](https://github.com/mmcLine/readme_pic/tree/master/images/3.png)
+ ![image](https://github.com/mmcLine/readme_pic/tree/master/images/4.png)
   ### 特别鸣谢
   Spring-Cloud-Admin
   如在启动时遇到问题可联系我QQ：990974807
